@@ -113,6 +113,14 @@ def arp_spoof(target_ip, target_mac, gateway_ip, gateway_mac):
 def home():
     return send_from_directory(app.static_folder, "index.html")
 
+const cors = require('cors');
+
+app.use(cors({
+  origin: 'https://tools-front-chi.vercel.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 @app.route("/arp/start", methods=["POST"])
 def arp_start():
     global running, attack_thread
@@ -616,6 +624,12 @@ def get_victims():
         "count": len([c for c in client_manager.clients.values() if c.get('online', False)]),
         "total": len(client_manager.clients)
     })
+    
+const response = await fetch('/api/real/clients');
+if (!response.ok) {
+    throw new Error(`السيرفر رجع خطأ برقم: ${response.status}`);
+}
+const data = await response.json();
 
 @app.route("/api/victims/clear", methods=["POST"])
 def clear_victims():
