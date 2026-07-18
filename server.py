@@ -151,7 +151,7 @@ def arp_stop():
     running = False
     return jsonify({"success": True, "message": "ARP Spoofing Stopped"})
 
-@app.post("/encrypt/file")
+@app.post("encrypt/file")
 def encrypt_file():
     if "file" not in request.files:
         return jsonify({"success": False, "message": "No file uploaded"})
