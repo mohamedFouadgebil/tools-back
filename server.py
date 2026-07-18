@@ -621,12 +621,6 @@ def get_victims():
         "total": len(client_manager.clients)
     })
     
-const response = await fetch('/api/real/clients');
-if (!response.ok) {
-    throw new Error(`السيرفر رجع خطأ برقم: ${response.status}`);
-}
-const data = await response.json();
-
 @app.route("/api/victims/clear", methods=["POST"])
 def clear_victims():
     client_manager.clients.clear()
