@@ -115,11 +115,7 @@ def home():
 
 const cors = require('cors');
 
-app.use(cors({
-  origin: 'https://tools-front-chi.vercel.app',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+CORS(app, resources={r"/*": {"origins": "https://tools-front-chi.vercel.app"}})
 
 @app.route("/arp/start", methods=["POST"])
 def arp_start():
